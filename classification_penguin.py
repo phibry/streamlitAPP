@@ -5,7 +5,7 @@ import pickle
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Penguin Prediction App
+# Penguin Prediction
 This app predicts the **Palmer Penguin** species!
 Data obtained from the [palmerpenguins library](https://github.com/allisonhorst/palmerpenguins) in R by Allison Horst.
 """)
@@ -40,7 +40,7 @@ else:
 
 # Combines user input features with entire penguins dataset
 # This will be useful for the encoding phase
-penguins_raw = pd.read_csv('doc/penguins_cleaned.csv')
+penguins_raw = pd.read_csv('penguins_cleaned.csv')
 penguins = penguins_raw.drop(columns=['species'])
 df = pd.concat([input_df,penguins],axis=0)
 
@@ -63,7 +63,7 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-load_clf = pickle.load(open('doc/penguins_clf.pkl', 'rb'))
+load_clf = pickle.load(open('penguins_clf.pkl', 'rb'))
 
 # Apply model to make predictions
 prediction = load_clf.predict(df)
